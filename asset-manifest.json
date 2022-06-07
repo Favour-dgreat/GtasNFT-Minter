@@ -1,0 +1,26 @@
+{
+  "files": {
+    "main.css": "/GtasNFT-Minter/static/css/main.a174681c.chunk.css",
+    "main.js": "/GtasNFT-Minter/static/js/main.e7fe80e4.chunk.js",
+    "main.js.map": "/GtasNFT-Minter/static/js/main.e7fe80e4.chunk.js.map",
+    "runtime-main.js": "/GtasNFT-Minter/static/js/runtime-main.6481350a.js",
+    "runtime-main.js.map": "/GtasNFT-Minter/static/js/runtime-main.6481350a.js.map",
+    "static/css/2.fa7a5eb6.chunk.css": "/GtasNFT-Minter/static/css/2.fa7a5eb6.chunk.css",
+    "static/js/2.967b6224.chunk.js": "/GtasNFT-Minter/static/js/2.967b6224.chunk.js",
+    "static/js/2.967b6224.chunk.js.map": "/GtasNFT-Minter/static/js/2.967b6224.chunk.js.map",
+    "static/js/3.c2b5b670.chunk.js": "/GtasNFT-Minter/static/js/3.c2b5b670.chunk.js",
+    "static/js/3.c2b5b670.chunk.js.map": "/GtasNFT-Minter/static/js/3.c2b5b670.chunk.js.map",
+    "index.html": "/GtasNFT-Minter/index.html",
+    "static/css/2.fa7a5eb6.chunk.css.map": "/GtasNFT-Minter/static/css/2.fa7a5eb6.chunk.css.map",
+    "static/css/main.a174681c.chunk.css.map": "/GtasNFT-Minter/static/css/main.a174681c.chunk.css.map",
+    "static/js/2.967b6224.chunk.js.LICENSE.txt": "/GtasNFT-Minter/static/js/2.967b6224.chunk.js.LICENSE.txt",
+    "static/media/bootstrap-icons.css": "/GtasNFT-Minter/static/media/bootstrap-icons.c1d7432e.woff"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.6481350a.js",
+    "static/css/2.fa7a5eb6.chunk.css",
+    "static/js/2.967b6224.chunk.js",
+    "static/css/main.a174681c.chunk.css",
+    "static/js/main.e7fe80e4.chunk.js"
+  ]
+}
