@@ -1,6 +1,6 @@
 
 <!-- ABOUT THE PROJECT -->
-[Give Them a Smile NFT Markeplace Logo](https://i.ibb.co/rc7Yf20/smil.jpg)
+![Give Them a Smile NFT Markeplace Logo](https://i.ibb.co/rc7Yf20/smil.jpg)
 
 ## About The Project
 
