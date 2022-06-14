@@ -12,19 +12,14 @@ import {
   sellImage,
   createNft,
   fetchNftContractOwner,
-  transferOwnership,
-  getOwners
+  transferOwnership
 } from "../../../utils/minter";
 import { Row } from "react-bootstrap";
-const cardStyle = {
-  display: grid,
-  gridColumn: center
-}
 const myStyle = {
-  gridColumn: center-start / -1,
-  display: grid,
-  gridAutoFlow: column,
-  overflow: auto,
+  gridColumn: `center-start / -1`,
+  display: 'grid',
+  gridAutoFlow: 'column',
+  overflow: 'auto',
 }
 const NftList = ({ minterContract, name }) => {
   /* performActions : used to run smart contract interactions in order
@@ -139,7 +134,6 @@ const NftList = ({ minterContract, name }) => {
             <AddNfts save={addNft} address={address} />
             <br />
             </div>
-            <div></div>
             <Row xs={1} sm={2} lg={3} className="g-3  mb-5 g-xl-4 g-xxl-5" style={myStyle}>
 
               {/* display all NFTs */}
