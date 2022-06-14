@@ -39,7 +39,6 @@ contract GTASNFT is ERC721, ERC721Enumerable, ERC721URIStorage, Ownable {
 
         _setTokenURI(tokenId, uri);
         createImage(tokenId, price);
-        // setApprovalForAll(msg.sender, true);
 
         return tokenId;
     }
