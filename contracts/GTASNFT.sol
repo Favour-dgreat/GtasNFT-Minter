@@ -27,32 +27,43 @@ contract GTASNFT is ERC721, ERC721Enumerable, ERC721URIStorage, Ownable {
 
     mapping(uint256 => Image) private images;
 
-//    mint an NFt
+    event Create(address seller, uint tokenId);
+
+    event Sold(address seller, address buyer, uint tokenId);
+    
+    event Sell(address seller, uint tokenId);
+
+    // mint an NFt
     function safeMint(string memory uri, uint256 price)
         public
         payable
         returns (uint256)
     {
+        require(bytes(uri).length > 0, "Enter valid uri");
+        require(price > 0, "Price must be at least 1 wei");
         uint256 tokenId = _tokenIdCounter.current();
         _tokenIdCounter.increment();
         _mint(msg.sender, tokenId);
 
         _setTokenURI(tokenId, uri);
         createImage(tokenId, price);
-
+        emit Create(msg.sender, tokenId);
         return tokenId;
     }
     // NFT Transfer Functionality
 
     function makeTransfer
     (address from, address to, uint256 tokenId)public{
+        require(tokenId >= 0, "Enter valid token id");
+        require(msg.sender == ownerOf(tokenId) || msg.sender == getApproved(tokenId), "Only the owner or an approved operator can perform this action");
+        require(to != address(0), "Enter a valid address");
         _transfer(from, to, tokenId);
         images[tokenId].owner = payable(to);
         owners++;
     }
+
     //Create NFT Functionality
     function createImage(uint256 tokenId, uint256 price) private {
-        require(price > 0, "Price must be at least 1 wei");
         images[tokenId] = Image(
             tokenId,
             payable(msg.sender),
@@ -66,22 +77,28 @@ contract GTASNFT is ERC721, ERC721Enumerable, ERC721URIStorage, Ownable {
 
     //Buy NFT Functionality
     function buyImage(uint256 tokenId) public payable {
+        require(tokenId >= 0, "Enter valid token id");
+        require(msg.sender != images[tokenId].seller, "You can't buy your own NFT");
         uint256 price = images[tokenId].price;
         address seller = images[tokenId].seller;
         require(
-            msg.value >= price,
+            msg.value == price,
             "Please submit the asking price in order to complete the purchase"
         );
         images[tokenId].owner = payable(msg.sender);
         images[tokenId].sold = true;
         images[tokenId].seller = payable(address(0));
         _transfer(address(this), msg.sender, tokenId);
-
-        payable(seller).transfer(msg.value);
+        uint amount = msg.value;
+        (bool success,) = seller.call{value: amount}("");
+        require(success, "Payment failed");
+        emit Sold(seller, msg.sender, tokenId);
+        
     }
 
     //Sell NFT Functionality
     function sellImage(uint256 tokenId) public payable {
+        require(tokenId >= 0, "Enter valid token id");
         require(
             images[tokenId].owner == msg.sender,
             "Only the owner of this NFT can perform this operation"
@@ -91,6 +108,7 @@ contract GTASNFT is ERC721, ERC721Enumerable, ERC721URIStorage, Ownable {
         images[tokenId].owner = payable(address(this));
 
         _transfer(msg.sender, address(this), tokenId);
+        emit Sell(msg.sender, tokenId);
     }
 
     function getImage(uint256 tokenId) public view returns (Image memory) {
